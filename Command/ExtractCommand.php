@@ -22,20 +22,19 @@ class ExtractCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $data = file_get_contents($this->path($input->getArgument('filename')));
+        $data = file_get_contents(path($input->getArgument('filename')));
+        $exportPath = path('output');
 
         $filesystem = new Filesystem();
-        $grammar = new Grammar();
-        $outputPath = $this->path('output');
 
-        if (!$filesystem->exists($outputPath)) {
-            $filesystem->mkdir($outputPath);
+        if (!$filesystem->exists($exportPath)) {
+            $filesystem->mkdir($exportPath);
         }
 
-        $result = $grammar->findAll($data);
+        $result = (new Grammar())->findAll($data);
         foreach ($result as $hex) {
             $filesystem->dumpFile(
-                $filesystem->tempnam($outputPath, 'dump_', '.png'),
+                $filesystem->tempnam($exportPath, 'dump_', '.png'),
                 hex2bin($hex)
             );
         }
@@ -43,10 +42,5 @@ class ExtractCommand extends Command
         $output->writeln(sprintf('<info>Success, Total: %s</info>', count($result)));
 
         return Command::SUCCESS;
-    }
-
-    protected function path(?string $path): string
-    {
-        return getcwd().($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }

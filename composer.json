@@ -6,7 +6,8 @@
     "autoload": {
         "psr-4": {
             "GingTeam\\": ""
-        }
+        },
+        "files": ["helpers.php"]
     },
     "require-dev": {
         "pestphp/pest": "^1.20"
