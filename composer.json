@@ -1,0 +1,14 @@
+{
+    "require": {
+        "symfony/console": "^5.3",
+        "symfony/filesystem": "^5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "GingTeam\\": ""
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^1.20"
+    }
+}
