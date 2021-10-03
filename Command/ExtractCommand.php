@@ -32,12 +32,15 @@ class ExtractCommand extends Command
             $filesystem->mkdir($outputPath);
         }
 
-        foreach ($grammar->findAll($data) as $hex) {
-            $name = $filesystem->tempnam($outputPath, 'dump_', '.png');
-            $filesystem->dumpFile($name, hex2bin($hex));
+        $result = $grammar->findAll($data);
+        foreach ($result as $hex) {
+            $filesystem->dumpFile(
+                $filesystem->tempnam($outputPath, 'dump_', '.png'),
+                hex2bin($hex)
+            );
         }
 
-        $output->writeln('<info>OK</info>');
+        $output->writeln(sprintf('<info>Success, Total: %s</info>', count($result)));
 
         return Command::SUCCESS;
     }
