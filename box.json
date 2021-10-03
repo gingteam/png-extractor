@@ -1,0 +1,7 @@
+{
+    "force-autodiscovery": true,
+    "blacklist": ["output"],
+    "main": "pngextractor",
+    "stub": false,
+    "output": "build/pngextractor.phar"
+}
