@@ -17,7 +17,8 @@ class ExtractCommand extends Command
 
     protected function configure(): void
     {
-        $this->addArgument('filename', InputArgument::REQUIRED, 'Filename.');
+        $this->setDescription('Extract binary data appended to a png file')
+            ->addArgument('filename', InputArgument::REQUIRED);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int

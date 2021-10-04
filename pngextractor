@@ -6,7 +6,7 @@ require __DIR__.'/vendor/autoload.php';
 use GingTeam\Command\ExtractCommand;
 use Symfony\Component\Console\Application;
 
-$application = new Application();
+$application = new Application('PNG Extractor', '1.0');
 
 $application->add(new ExtractCommand());
 
