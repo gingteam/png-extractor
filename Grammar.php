@@ -7,7 +7,8 @@ namespace GingTeam;
 /**
  * @author ging-dev <thanh1101dev@gmail.com>
  */
-final class Grammar {
+final class Grammar
+{
     /*
      * @see https://stackoverflow.com/questions/42597139/extracting-jpeg-png-gif-images-from-data-dump/42614668
      */

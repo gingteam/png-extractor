@@ -11,8 +11,9 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
-class ExtractCommand extends Command
+final class ExtractCommand extends Command
 {
+    /** @var string */
     protected static $defaultName = 'run';
 
     protected function configure(): void
@@ -21,14 +22,16 @@ class ExtractCommand extends Command
             ->addArgument('filename', InputArgument::REQUIRED);
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
+    protected function execute(
+        InputInterface $input,
+        OutputInterface $output
+    ): int {
         $data = file_get_contents(path($input->getArgument('filename')));
         $exportPath = path('output');
 
         $filesystem = new Filesystem();
 
-        if (!$filesystem->exists($exportPath)) {
+        if (! $filesystem->exists($exportPath)) {
             $filesystem->mkdir($exportPath);
         }
 
