@@ -14,8 +14,9 @@ jobs:
           fetch-depth: 0
       - name: "Build release"
         run: |
-            wget https://github.com/box-project/box/releases/download/3.13.0/box.phar -O /usr/bin/box
+            sudo wget https://github.com/box-project/box/releases/download/3.13.0/box.phar -O /usr/bin/box
             composer install --prefer-dist --no-progress
+            sudo chmod +x /usr/bin/box
             box build
 
       - uses: "marvinpinto/action-automatic-releases@latest"
