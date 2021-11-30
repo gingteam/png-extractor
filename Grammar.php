@@ -15,7 +15,7 @@ final class Grammar
     public const PNG_REGEXP = '/89504e470d0a1a0a.+?49454e44ae426082/';
 
     /**
-     * Trả về mảng chứa dữ liệu của các ảnh (hex)
+     * @return string[]
      */
     public function findAll(string $data): array
     {
