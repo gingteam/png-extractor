@@ -31,7 +31,7 @@ final class ExtractCommand extends Command
 
         $filesystem = new Filesystem();
 
-        if (! $filesystem->exists($exportPath)) {
+        if (!$filesystem->exists($exportPath)) {
             $filesystem->mkdir($exportPath);
         }
 
