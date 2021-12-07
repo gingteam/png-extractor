@@ -1,7 +1,7 @@
 # PNG Extractor
 Tool to extract images from binary file
 
-![](https://i.imgur.com/OTCK0hN.png)
+![](https://i.imgur.com/TukTKpF.png)
 
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
 ![Made with love in Vietnam](https://madewithlove.now.sh/vn?heart=true)
