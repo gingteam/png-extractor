@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace GingTeam;
 
+use Composer\Pcre\Regex;
+
 /**
  * @author ging-dev <thanh1101dev@gmail.com>
+ * @author ciricode <ciricode@protonmail.com>
  */
 final class Grammar
 {
@@ -19,8 +22,11 @@ final class Grammar
      */
     public function findAll(string $data): array
     {
-        preg_match_all(self::PNG_REGEXP, bin2hex($data), $matches);
+        $result = Regex::matchAll(self::PNG_REGEXP, bin2hex($data));
+        if ($result->matched) {
+            return $result->matches[0];
+        }
 
-        return $matches[0];
+        return [];
     }
 }
