@@ -20,13 +20,10 @@ final class Grammar
     /**
      * @return string[]
      */
-    public function findAll(string $data): array
+    public static function extract(string $data): array
     {
-        $result = Regex::matchAll(self::PNG_REGEXP, bin2hex($data));
-        if ($result->matched) {
-            return $result->matches[0];
-        }
+        preg_match_all(self::PNG_REGEXP, bin2hex($data), $matches);
 
-        return [];
+        return $matches[0];
     }
 }

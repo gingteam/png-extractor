@@ -1,8 +1,7 @@
 {
     "require": {
         "symfony/console": "^5.3",
-        "symfony/filesystem": "^5.3",
-        "composer/pcre": "^1.0"
+        "symfony/filesystem": "^5.3"
     },
     "autoload": {
         "psr-4": {

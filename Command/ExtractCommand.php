@@ -35,7 +35,7 @@ final class ExtractCommand extends Command
             $filesystem->mkdir($exportPath);
         }
 
-        $result = (new Grammar())->findAll($data);
+        $result = Grammar::extract($data);
         foreach ($result as $hex) {
             $filesystem->dumpFile(
                 $filesystem->tempnam($exportPath, 'dump_', '.png'),

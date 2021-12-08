@@ -1,15 +1,13 @@
 <?php
 
-beforeEach(function () {
-    $this->grammar = new GingTeam\Grammar();
-});
+use GingTeam\Grammar;
 
 test('regex test 1', function () {
-    $this->assertCount(1, $this->grammar->findAll(getFixture('test.png')));
+    $this->assertCount(1, Grammar::extract(getFixture('test.png')));
 });
 
 test('regex test 2', function () {
-    $this->assertCount(447, $this->grammar->findAll(getFixture('HA3.bin')));
+    $this->assertCount(447, Grammar::extract(getFixture('HA3.bin')));
 });
 
 function getFixture(string $filename): string
