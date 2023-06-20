@@ -26,7 +26,7 @@ final class ExtractCommand extends Command
         InputInterface $input,
         OutputInterface $output
     ): int {
-        $data = file_get_contents(path($input->getArgument('filename')));
+        $data = \fopen(path($input->getArgument('filename')), 'rb');
         $exportPath = path('output');
 
         $filesystem = new Filesystem();
@@ -35,15 +35,17 @@ final class ExtractCommand extends Command
             $filesystem->mkdir($exportPath);
         }
 
+        $total = 0;
         $result = Grammar::extract($data);
-        foreach ($result as $hex) {
+        foreach ($result as $image) {
             $filesystem->dumpFile(
                 $filesystem->tempnam($exportPath, 'dump_', '.png'),
-                hex2bin($hex)
+                $image
             );
+            ++$total;
         }
 
-        $output->writeln(sprintf('<info>Success, Total: %s</info>', count($result)));
+        $output->writeln(sprintf('<info>Success, Total: %s</info>', $total));
 
         return Command::SUCCESS;
     }
