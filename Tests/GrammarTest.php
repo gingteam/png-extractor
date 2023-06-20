@@ -2,15 +2,21 @@
 
 use GingTeam\Grammar;
 
-test('regex test 1', function () {
-    $this->assertCount(1, Grammar::extract(getFixture('test.png')));
+test('extract 1', function () {
+    $this->assertCount(1, png_extract('test.png'));
 });
 
-test('regex test 2', function () {
-    $this->assertCount(447, Grammar::extract(getFixture('HA3.bin')));
+test('extract 2', function () {
+    $this->assertCount(447, png_extract('HA3.bin'));
 });
 
-function getFixture(string $filename): string
+/**
+ * @return array<string>
+ */
+function png_extract(string $filename)
 {
-    return file_get_contents(__DIR__.'/Fixtures/'.$filename) ?? '';
+    /** @var resource */
+    $file = \fopen(__DIR__.'/Fixtures/'.$filename, 'rb');
+
+    return iterator_to_array(Grammar::extract($file));
 }
