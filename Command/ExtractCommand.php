@@ -26,7 +26,7 @@ final class ExtractCommand extends Command
         InputInterface $input,
         OutputInterface $output
     ): int {
-        $filename = path($input->getArgument('filename'));
+        $data = \fopen(path($input->getArgument('filename')), 'rb');
         $exportPath = path('output');
 
         $filesystem = new Filesystem();
