@@ -26,7 +26,7 @@ final class ExtractCommand extends Command
         InputInterface $input,
         OutputInterface $output
     ): int {
-        $data = \fopen(path($input->getArgument('filename')), 'rb');
+        $filename = path($input->getArgument('filename'));
         $exportPath = path('output');
 
         $filesystem = new Filesystem();
@@ -36,7 +36,7 @@ final class ExtractCommand extends Command
         }
 
         $total = 0;
-        $result = Grammar::extract($data);
+        $result = Grammar::extract($filename);
         foreach ($result as $image) {
             $filesystem->dumpFile(
                 $filesystem->tempnam($exportPath, 'dump_', '.png'),
