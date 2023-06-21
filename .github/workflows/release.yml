@@ -14,10 +14,10 @@ jobs:
           fetch-depth: 0
       - name: "Build release"
         run: |
-            sudo wget https://github.com/box-project/box/releases/download/3.13.0/box.phar -O /usr/bin/box
-            composer install --prefer-dist --no-progress
+            sudo wget https://github.com/box-project/box/releases/download/4.3.8/box.phar -O /usr/bin/box
+            composer install --prefer-dist --no-progress --no-dev --optimize-autoloader
             sudo chmod +x /usr/bin/box
-            box build
+            box compile
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
@@ -25,4 +25,4 @@ jobs:
           automatic_release_tag: "latest"
           prerelease: true
           title: "Development Build"
-          files: build/pngextractor.phar
+          files: build/pngextractor
