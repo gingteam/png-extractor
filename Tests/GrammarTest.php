@@ -15,8 +15,5 @@ test('extract 2', function () {
  */
 function png_extract(string $filename)
 {
-    /** @var resource */
-    $file = \fopen(__DIR__.'/Fixtures/'.$filename, 'rb');
-
-    return iterator_to_array(Grammar::extract($file));
+    return iterator_to_array(Grammar::extract(__DIR__.'/Fixtures/'.$filename));
 }

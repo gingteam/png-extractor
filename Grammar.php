@@ -11,14 +11,14 @@ namespace GingTeam;
 final class Grammar
 {
     /**
-     * @param resource $data
+     * @param string $filename
      *
      * @return \Generator<string>
      */
-    public static function extract($data)
+    public static function extract(string $filename): \Generator
     {
-        fseek($data, 0, SEEK_END);
-        $num_bytes = ftell($data);
+        $data = fopen($filename, 'rb');
+        $num_bytes = fstat($data)['size'];
         for ($i = 0; $i < $num_bytes; ++$i) {
             fseek($data, $i);
             $eight_bytes = fread($data, 8);
