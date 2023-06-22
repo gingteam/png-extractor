@@ -42,7 +42,8 @@ final class Grammar
 
             // work with .spr case
             if ("\x50\x4c\x54\x45" === $four_bytes && '' === $beforeIDAT) {
-                fseek($data, $offset - 4);
+                $offset -= 4;
+                fseek($data, $offset);
                 $skip_bytes = 0;
                 do {
                     [$type, $chunk, $length] = $png_chunk($data);
@@ -53,7 +54,8 @@ final class Grammar
             }
 
             if ("\x49\x48\x44\x52" === $four_bytes) {
-                fseek($data, $offset - 4);
+                $offset -= 4;
+                fseek($data, $offset);
                 $png_data = "\x89\x50\x4e\x47\x0d\x0a\x1a\x0a";
                 $i = $skip_bytes = 0;
                 do {
