@@ -48,7 +48,7 @@ final class Grammar
                     [$type, $chunk, $length] = $png_chunk($data);
                     $beforeIDAT .= $chunk;
                     $skip_bytes += $length;
-                } while ('tRNS' === $type);
+                } while ('tRNS' !== $type);
                 $offset += $skip_bytes;
             }
 
