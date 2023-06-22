@@ -3,7 +3,7 @@
 use GingTeam\Grammar;
 
 test('extract 1', function () {
-    $this->assertCount(1, png_extract('test.png'));
+    $this->assertCount(1, png_extract('u00.spr'));
 });
 
 test('extract 2', function () {
